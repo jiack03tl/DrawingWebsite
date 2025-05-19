@@ -1,0 +1,56 @@
+{% extends "layout.html" %} 
+{% block title %}home page{% endblock %} 
+{% block content %}
+<h4>AVAILABLES DRAWING ARE HERE!!</h4>
+
+<div class="grid grid-cols-3 gap-4 p-10 m-10">
+  {% for drawing in drawings %}
+  <div class="bg-purple-900 p-7 rounded-lg shadow-md">
+    <img src="{{drawing.image.url}}" alt="" />
+    <h3>{{drawing.description}}</h3>
+    <a href="{% url 'drawing_detail' drawing.id %}">
+      <button
+        type="button"
+        class="inline-flex justify-center items-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-600-700 rounded-lg hover:bg-pu-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        {{ drawing.name }}-{{ drawing.id }}
+      </button>
+    </a>
+    <form method="POST" action="{% url 'delete_drawing' drawing.id %}">
+    {% csrf_token %}
+<!-- Edit Button -->
+<a href="{% url 'edit_drawing' drawing.id %}">
+  <button type="button"
+    class="w-full mt-2 bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg text-sm">
+    Edit
+  </button>
+</a>
+
+<!-- Delete Button (in separate form) -->
+<form action="{% url 'delete_drawing' drawing.id %}" method="POST" class="mt-2">
+  {% csrf_token %}
+  <button
+    type="submit"
+    class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg text-sm"
+  >
+    Delete
+  </button>
+</form>
+
+    
+  </form>
+  </div>
+  
+  {% endfor %}
+
+</div>
+<div class="flex justify-center mt-10 pb-10">
+  <a href="{% url 'add_drawing' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-300">
+    Add Drawing
+  </a>
+
+</div>
+
+</div>
+
+{% endblock %}

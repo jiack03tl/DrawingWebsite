@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}Edit Drawing{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4 text-center">Edit Drawing</h2>
+  <form method="POST" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+      Update Drawing
+    </button>
+  </form>
+</div>
+{% endblock %}

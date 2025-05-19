@@ -1,0 +1,9 @@
+{% extends "layout.html" %} 
+{% block title %}home page{% endblock %} 
+{% block content %}
+
+
+<h3>{{draws.name}}</h3>
+<img src="{{draws.image.urls}}" alt="">
+{% comment %} <img src="{{drawing.image.url}}" alt="" /> {% endcomment %}
+{% endblock %}

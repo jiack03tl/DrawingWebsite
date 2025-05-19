@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<a href="{% url 'all_drawings' %}">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4">
+  <div class="bg-white rounded-2xl shadow-xl p-10 text-center max-w-2xl w-full">
+ 
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">🎨 Available Drawings</h1>
+  
+    <div class="mt-12">
+      <!-- Add more content here -->
+      <p class="text-gray-600">Start uploading or browsing drawings now!</p>
+    </div>
+  </div>
+</div>
+</a>
+{% endblock %}
